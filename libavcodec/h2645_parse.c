@@ -267,7 +267,7 @@ int ff_h2645_packet_split(H2645Packet *pkt, const uint8_t *buf, int length,
     GetByteContext bc;
     int consumed, ret = 0;
     int next_avc = is_nalff ? 0 : length;
-    int64_t padding = small_padding ? 0 : MAX_MBPAIR_SIZE;
+    int64_t padding = 0;//small_padding ? 0 : MAX_MBPAIR_SIZE;
 
     bytestream2_init(&bc, buf, length);
     av_fast_padded_malloc(&pkt->rbsp.rbsp_buffer, &pkt->rbsp.rbsp_buffer_alloc_size, length + padding);
